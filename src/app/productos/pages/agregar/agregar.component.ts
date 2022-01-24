@@ -9,14 +9,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AgregarComponent {
 
+  texto1: string = 'Pancho Soto';
+  color: string = 'red';
+
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', Validators.required]
   });
-
+ 
   constructor(private fb: FormBuilder) { }
 
-  campoValido(campo: string){
+
+
+  campoValido(campo: string) {
     return this.miFormulario.get(campo)?.invalid;
+  }
+  
+  cambiarNombre() {
+    this.texto1 = Math.random().toString();
+  }
+
+  cambiarColor() {
+    const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
+    this.color = color;
   }
 
 
